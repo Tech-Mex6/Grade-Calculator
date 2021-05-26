@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="KKI-ii-eQB" customClass="Footer" customModule="practice" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XKM-hl-o9k">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GPA:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vje-pk-JE3">
+                            <rect key="frame" x="80" y="399" width="38" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r2E-eZ-Jae">
+                            <rect key="frame" x="333" y="397" width="76" height="24"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <state key="normal" title="Button">
+                                <imageReference key="image" image="plus.circle.fill" catalog="system" symbolScale="large"/>
+                            </state>
+                            <connections>
+                                <action selector="addClassButton:" destination="KKI-ii-eQB" eventType="touchUpInside" id="29X-JJ-k81"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="vje-pk-JE3" firstAttribute="centerY" secondItem="XKM-hl-o9k" secondAttribute="centerY" id="UDB-WG-3PW"/>
+                        <constraint firstItem="r2E-eZ-Jae" firstAttribute="centerY" secondItem="XKM-hl-o9k" secondAttribute="centerY" id="adg-52-9kN"/>
+                        <constraint firstItem="vje-pk-JE3" firstAttribute="leading" secondItem="XKM-hl-o9k" secondAttribute="leading" constant="80" id="h0N-6a-9kJ"/>
+                        <constraint firstAttribute="trailing" secondItem="r2E-eZ-Jae" secondAttribute="trailing" constant="5" id="xjD-04-1jT"/>
+                        <constraint firstAttribute="height" constant="60" id="znZ-ly-Of0"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="AoF-Wm-d9k"/>
+            <color key="backgroundColor" name="AccentColor"/>
+            <constraints>
+                <constraint firstItem="XKM-hl-o9k" firstAttribute="leading" secondItem="AoF-Wm-d9k" secondAttribute="leading" id="P8b-dB-Ewy"/>
+                <constraint firstItem="XKM-hl-o9k" firstAttribute="top" secondItem="AoF-Wm-d9k" secondAttribute="top" id="Yx3-QU-Az0"/>
+                <constraint firstItem="AoF-Wm-d9k" firstAttribute="bottom" secondItem="XKM-hl-o9k" secondAttribute="bottom" id="Ztr-6I-Ogt"/>
+                <constraint firstItem="AoF-Wm-d9k" firstAttribute="trailing" secondItem="XKM-hl-o9k" secondAttribute="trailing" id="aCd-rC-ZJe"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="gpaLabel" destination="vje-pk-JE3" id="hRC-1c-XiD"/>
+            </connections>
+            <point key="canvasLocation" x="366.66666666666669" y="-7.3660714285714279"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

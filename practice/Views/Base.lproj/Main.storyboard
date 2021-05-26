@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SvY-Jj-K4P">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="practice" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jiu-kW-qc5">
+                                <rect key="frame" x="100" y="820" width="214" height="22"/>
+                                <state key="normal" title="Add Semester" image="plus" catalog="system">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="addSemesterButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2ih-ww-m9l"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Grade System" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s9j-8p-3WJ">
+                                <rect key="frame" x="150" y="118" width="114" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YeJ-mM-Abo">
+                                <rect key="frame" x="0.0" y="162" width="414" height="628"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cpw-qY-E3b">
+                                <rect key="frame" x="100" y="810" width="214" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="YeJ-mM-Abo" secondAttribute="trailing" id="34h-ka-5je"/>
+                            <constraint firstItem="cpw-qY-E3b" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="7WE-lR-Ppk"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="jiu-kW-qc5" secondAttribute="bottom" constant="20" id="7bU-M3-27L"/>
+                            <constraint firstItem="s9j-8p-3WJ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="8O6-r8-OSD"/>
+                            <constraint firstItem="s9j-8p-3WJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="150" id="ECP-NA-f5z"/>
+                            <constraint firstItem="YeJ-mM-Abo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="PTD-E0-m9v"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jiu-kW-qc5" secondAttribute="trailing" constant="100" id="XUR-Gb-2ES"/>
+                            <constraint firstItem="jiu-kW-qc5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="cDx-AY-PKW"/>
+                            <constraint firstItem="jiu-kW-qc5" firstAttribute="top" secondItem="cpw-qY-E3b" secondAttribute="bottom" constant="10" id="pj5-8Q-uKj"/>
+                            <constraint firstItem="cpw-qY-E3b" firstAttribute="top" secondItem="YeJ-mM-Abo" secondAttribute="bottom" constant="20" id="qkc-hn-9b1"/>
+                            <constraint firstItem="YeJ-mM-Abo" firstAttribute="top" secondItem="s9j-8p-3WJ" secondAttribute="bottom" constant="10" id="uS9-mi-zs5"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="s9j-8p-3WJ" secondAttribute="trailing" constant="150" id="zDb-do-Rq3"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="cpw-qY-E3b" secondAttribute="trailing" constant="100" id="zf7-En-RDb"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="c1q-xZ-Q3r"/>
+                    <connections>
+                        <outlet property="cumulativeGradePointAverage" destination="cpw-qY-E3b" id="m2B-YJ-bUT"/>
+                        <outlet property="gradeSystemTextField" destination="s9j-8p-3WJ" id="rTv-dN-PW2"/>
+                        <outlet property="tableView" destination="YeJ-mM-Abo" id="znK-Kw-oyf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="439.13043478260875" y="-23.4375"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="B6k-Z7-ODt">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SvY-Jj-K4P" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="WXK-8G-M4N">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="dIf-vN-CJL"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z7W-sK-eQy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-471.01449275362324" y="-23.4375"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="plus" catalog="system" width="128" height="113"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

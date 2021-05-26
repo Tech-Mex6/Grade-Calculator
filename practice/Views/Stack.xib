@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ExF-SV-TTd" customClass="Stack" customModule="practice" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="30"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ExF-SV-TTd" id="fiv-S3-xfX">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="30"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u30-pu-Nfe">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="30"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Sl-QB-cfl" userLabel="ClassContainerView">
+                                <rect key="frame" x="0.0" y="0.0" width="110" height="30"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Course Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="exd-o5-T2i">
+                                        <rect key="frame" x="5" y="5" width="100" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="eqa-sh-bat"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="exd-o5-T2i" firstAttribute="top" secondItem="7Sl-QB-cfl" secondAttribute="top" constant="5" id="FQr-b7-gXY"/>
+                                    <constraint firstAttribute="trailing" secondItem="exd-o5-T2i" secondAttribute="trailing" constant="5" id="Ra9-CD-HVN"/>
+                                    <constraint firstItem="exd-o5-T2i" firstAttribute="leading" secondItem="7Sl-QB-cfl" secondAttribute="leading" constant="5" id="abe-Nb-Wkq"/>
+                                    <constraint firstAttribute="bottom" secondItem="exd-o5-T2i" secondAttribute="bottom" constant="5" id="vPa-L3-fsO"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="idJ-JR-KU3" userLabel="GradeContainerView">
+                                <rect key="frame" x="110" y="0.0" width="194" height="30"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Grade" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aOc-yP-WMn">
+                                        <rect key="frame" x="10" y="5" width="174" height="20"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="aOc-yP-WMn" secondAttribute="trailing" constant="10" id="5hm-Lq-V3L"/>
+                                    <constraint firstAttribute="bottom" secondItem="aOc-yP-WMn" secondAttribute="bottom" constant="5" id="8Y7-d9-0tp"/>
+                                    <constraint firstItem="aOc-yP-WMn" firstAttribute="leading" secondItem="idJ-JR-KU3" secondAttribute="leading" constant="10" id="H5a-qc-vBI"/>
+                                    <constraint firstItem="aOc-yP-WMn" firstAttribute="top" secondItem="idJ-JR-KU3" secondAttribute="top" constant="5" id="gfN-G0-nSc"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YIw-ty-97O" userLabel="CreditHoursContainerViews">
+                                <rect key="frame" x="304" y="0.0" width="110" height="30"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Credit Hours" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IL3-4y-1vE">
+                                        <rect key="frame" x="5" y="5" width="100" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="nxP-S7-lKq"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="done"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="IL3-4y-1vE" firstAttribute="leading" secondItem="YIw-ty-97O" secondAttribute="leading" constant="5" id="1EA-yD-EhL"/>
+                                    <constraint firstAttribute="bottom" secondItem="IL3-4y-1vE" secondAttribute="bottom" constant="5" id="LBp-in-kxz"/>
+                                    <constraint firstAttribute="trailing" secondItem="IL3-4y-1vE" secondAttribute="trailing" constant="5" id="erY-Tr-MxO"/>
+                                    <constraint firstItem="IL3-4y-1vE" firstAttribute="top" secondItem="YIw-ty-97O" secondAttribute="top" constant="5" id="ffG-Ue-cvw"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="u30-pu-Nfe" firstAttribute="top" secondItem="fiv-S3-xfX" secondAttribute="top" id="07k-XL-Clx"/>
+                    <constraint firstAttribute="bottom" secondItem="u30-pu-Nfe" secondAttribute="bottom" id="XF9-AO-VVj"/>
+                    <constraint firstItem="u30-pu-Nfe" firstAttribute="leading" secondItem="fiv-S3-xfX" secondAttribute="leading" id="grt-8h-2fD"/>
+                    <constraint firstAttribute="trailing" secondItem="u30-pu-Nfe" secondAttribute="trailing" id="tci-lx-riK"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="Grades" destination="aOc-yP-WMn" id="j8b-1Y-ccN"/>
+                <outlet property="courseTitleTextField" destination="exd-o5-T2i" id="TnI-08-iPL"/>
+                <outlet property="creditHoursTextField" destination="IL3-4y-1vE" id="ZYQ-5h-fdr"/>
+            </connections>
+            <point key="canvasLocation" x="-600" y="44"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
