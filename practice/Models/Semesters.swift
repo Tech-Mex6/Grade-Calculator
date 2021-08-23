@@ -47,7 +47,3 @@ class Semesters {
     }
 }
 
-//totalCreditHours = totalCreditHours + _class.creditHours
-//totalCredits     = totalCredits + (_class.gradePoint * _class.creditHours)
-//totalGPA         = totalGPA + (totalCredits * totalCreditHours)
-//weighedAverage   = weighedAverage + (totalCreditHours * totalGPA)

@@ -29,8 +29,7 @@ class ViewController: UIViewController, UITableViewDataSource,UITableViewDelegat
 
 
         view.backgroundColor = .systemBackground
-        
-        title = "Grader"
+        title                = "Grader"
         
         self.tableView.dataSource      = self
         self.tableView.delegate        = self
@@ -102,7 +101,7 @@ class ViewController: UIViewController, UITableViewDataSource,UITableViewDelegat
         guard let _classes =  classDict[indexPath.section] else {return
             UITableViewCell(style: .default, reuseIdentifier: nil)
         }
-        if _classes.count > indexPath.row{
+        if _classes.count > indexPath.row {
             let _class = _classes[indexPath.row]
             var cell = tableView.dequeueReusableCell(withIdentifier: "Stack")
             if (cell == nil)
@@ -110,7 +109,7 @@ class ViewController: UIViewController, UITableViewDataSource,UITableViewDelegat
                 tableView.register(UINib.init(nibName: "Stack", bundle: nil), forCellReuseIdentifier: "Stack")
                 cell = tableView.dequeueReusableCell(withIdentifier: "Stack")
             }
-            if let stackCell = cell as? Stack{
+            if let stackCell = cell as? Stack {
                 stackCell.gradeSystem               = selectedGradeSystemPicker
                 stackCell.courseTitleTextField.text = _class.courseName
                 stackCell.creditHoursTextField.text = "\(_class.creditHours)"
@@ -141,12 +140,11 @@ class ViewController: UIViewController, UITableViewDataSource,UITableViewDelegat
     
     //Swipe to remove/delete a cell/class
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
+        guard editingStyle == .delete else { return }
             numberOfClasses = classDict[indexPath.section]?.count ?? 0
             classDict[indexPath.section]!.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.deleteRows(at: [indexPath], with: .left)
             numberOfClasses -= 1
-        }
     }
     
     
@@ -167,7 +165,7 @@ class ViewController: UIViewController, UITableViewDataSource,UITableViewDelegat
         guard let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: "footer"), let footerView = view as? Footer else{
             return nil
         }
-        if footerView.addClassTapped == nil{
+        if footerView.addClassTapped == nil {
             footerView.addClassTapped = self.didAddClass
         }
         footerView.sectionNumber = section
@@ -196,7 +194,7 @@ class ViewController: UIViewController, UITableViewDataSource,UITableViewDelegat
         tableView.reloadData()
     }
     
-    func didAddClass(sectionNumber: Int){
+    func didAddClass(sectionNumber: Int) {
         if classDict[sectionNumber] == nil{
             classDict[sectionNumber] = [Classes]()
         }
@@ -207,7 +205,7 @@ class ViewController: UIViewController, UITableViewDataSource,UITableViewDelegat
         tableView.reloadData()
     }
     
-    func didUpdateClassInfo(semesterIndex:Int, classIndex: Int, courseName: String?, grade: String?, creditHours: String?){
+    func didUpdateClassInfo(semesterIndex:Int, classIndex: Int, courseName: String?, grade: String?, creditHours: String?) {
         guard let _classes =  classDict[semesterIndex] else {return}
         if _classes.count > classIndex{
             let _class = _classes[classIndex]
@@ -224,10 +222,8 @@ class ViewController: UIViewController, UITableViewDataSource,UITableViewDelegat
         }
     }
     // delete section/semester
-    func didDeleteSemester(sectionIndex: Int){
-        numberOfSemesters -= 1
+    func didDeleteSemester(sectionIndex: Int) {
         classDict.removeValue(forKey: sectionIndex)
-        tableView.deleteSections(IndexSet(integer: sectionIndex), with: .automatic)
         print("Semester \(sectionIndex + 1) has been removed.")
         tableView.reloadData()
     }
