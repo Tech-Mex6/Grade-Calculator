@@ -25,6 +25,7 @@ class Classes{
             totalCredits     = totalCredits + (_class.gradePoint * _class.creditHours)
             totalCreditHours = totalCreditHours + _class.creditHours
         }
+        guard totalCreditHours != 0 else {return 0.00}
         let gpa = round(totalCredits * 100/totalCreditHours)/100
         return gpa
     }

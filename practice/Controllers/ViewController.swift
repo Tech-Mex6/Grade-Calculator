@@ -2,8 +2,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource,UITableViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
-    
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     @IBOutlet var gradeSystemTextField: UITextField!
     @IBOutlet var tableView: UITableView!
     @IBOutlet weak var cumulativeGradePointAverage: UILabel!
@@ -21,13 +20,13 @@ class ViewController: UIViewController, UITableViewDataSource,UITableViewDelegat
     var classDict: [Int:[Classes]] = [Int:[Classes]]()
     var footer: Footer?            = nil
     
+    
     var scrollView: UIScrollView!
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
+   
         view.backgroundColor = .systemBackground
         title                = "Grader"
         
@@ -56,9 +55,11 @@ class ViewController: UIViewController, UITableViewDataSource,UITableViewDelegat
         guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else{
             return
         }
-        let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardSize.height, right: 0.0)
+        let bottomSafeAreaHeight = self.view.safeAreaInsets.bottom
+        let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardSize.height - bottomSafeAreaHeight - 91.33 , right: 0.0)
         tableView.contentInset = contentInsets
         tableView.scrollIndicatorInsets = contentInsets
+        
     }
     
     @objc func keyboardWillHide(){
@@ -112,14 +113,15 @@ class ViewController: UIViewController, UITableViewDataSource,UITableViewDelegat
             if let stackCell = cell as? Stack {
                 stackCell.gradeSystem               = selectedGradeSystemPicker
                 stackCell.courseTitleTextField.text = _class.courseName
-                stackCell.creditHoursTextField.text = "\(_class.creditHours)"
+                stackCell.creditHoursTextField.text = String(_class.creditHours)
                 stackCell.Grades.text               = _class.gradeLetter
                 stackCell.classIndex                = indexPath.row
                 stackCell.semesterIndex             = indexPath.section
                 stackCell.classInfoUpdated          = self.didUpdateClassInfo
             }
+        
             return cell!
-        }else{
+        }else {
             return UITableViewCell(style: .default, reuseIdentifier: nil)
         }
         
@@ -138,7 +140,7 @@ class ViewController: UIViewController, UITableViewDataSource,UITableViewDelegat
         return true
     }
     
-    //Swipe to remove/delete a cell/class
+    /// implements the swipe to delete functionality
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         guard editingStyle == .delete else { return }
             numberOfClasses = classDict[indexPath.section]?.count ?? 0
@@ -146,6 +148,7 @@ class ViewController: UIViewController, UITableViewDataSource,UITableViewDelegat
             tableView.deleteRows(at: [indexPath], with: .left)
             numberOfClasses -= 1
     }
+    
     
     
     //MARK: - SECTION HEADER AND FOOTER
@@ -169,6 +172,7 @@ class ViewController: UIViewController, UITableViewDataSource,UITableViewDelegat
             footerView.addClassTapped = self.didAddClass
         }
         footerView.sectionNumber = section
+        footerView.backgroundColor = .systemGray
         footerView.classGPA = Classes.calculateGPA(for: self.classDict[section] ?? [])
         
         var semesters = [Semesters]()
@@ -186,8 +190,14 @@ class ViewController: UIViewController, UITableViewDataSource,UITableViewDelegat
         return "Semester \(section + 1)"
     }
     
-    //MARK: - ADD CLASS, ADD SEMESTER & DELETE SEMESTER METHODS
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 50.0
+    }
     
+    
+    
+    //MARK: - ADD CLASS, ADD SEMESTER & DELETE SEMESTER METHODS
+    /// Responsible for the addition of sections/semesters to the table view
     @IBAction func addSemesterButton(_ sender: Any) {
         classDict[numberOfSemesters] = [Classes]()
         numberOfSemesters += 1
@@ -201,30 +211,31 @@ class ViewController: UIViewController, UITableViewDataSource,UITableViewDelegat
         let newClass = Classes(courseName: "", gradeLetter: "", creditHours: 0.0, gradePoint: 0.00)
         classDict[sectionNumber]?.append(newClass)
         numberOfClasses += 1
-        print("class added to section number\(sectionNumber + 1)")
         tableView.reloadData()
     }
     
     func didUpdateClassInfo(semesterIndex:Int, classIndex: Int, courseName: String?, grade: String?, creditHours: String?) {
-        guard let _classes =  classDict[semesterIndex] else {return}
-        if _classes.count > classIndex{
+        guard let _classes =  classDict[semesterIndex] else { return }
+        if _classes.count > classIndex {
             let _class = _classes[classIndex]
             _class.courseName = courseName ?? ""
             _class.gradeLetter = grade ?? ""
             _class.creditHours = Double(creditHours ?? "") ?? 0.0
             
-            if selectedGradeSystemPicker == 0{
+            if selectedGradeSystemPicker == 0 {
             _class.gradePoint = Classes.fourPointGrades(gradeLetter: _class.gradeLetter)
-            }else if selectedGradeSystemPicker == 1{
+            } else if selectedGradeSystemPicker == 1 {
                 _class.gradePoint = Classes.fivePointGrades(gradeLetter: _class.gradeLetter)
             }
-            tableView.reloadData()
         }
+        tableView.reloadData()
     }
-    // delete section/semester
+    /// Responsible for the deletion of section/semesters from the table view
     func didDeleteSemester(sectionIndex: Int) {
-        classDict.removeValue(forKey: sectionIndex)
-        print("Semester \(sectionIndex + 1) has been removed.")
+        //classDict.removeValue(forKey: sectionIndex)
+        if let deletedSemester = classDict.removeValue(forKey: sectionIndex) {
+            print(deletedSemester)
+        }
         tableView.reloadData()
     }
     

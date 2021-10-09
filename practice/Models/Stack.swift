@@ -60,7 +60,7 @@ class Stack: UITableViewCell, UIPickerViewDataSource, UIPickerViewDelegate, UITe
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if gradeSystem == 0{
+        if gradeSystem == 0 {
             Grades.text = fourPointGradeSystemPickerData[row]
             Grades.resignFirstResponder()
             if let handler = classInfoUpdated{

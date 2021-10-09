@@ -21,7 +21,7 @@ class Footer: UITableViewHeaderFooterView{
     }
     @IBAction func addClassButton(_ sender: Any) {
         print("add class button called")
-        guard let addClassHandler = addClassTapped else{return}
+        guard let addClassHandler = addClassTapped else { return }
         addClassHandler(sectionNumber)
     }
     

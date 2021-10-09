@@ -28,10 +28,10 @@
             <viewLayoutGuide key="safeArea" id="F3T-cP-ZuQ"/>
             <color key="backgroundColor" red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="dUE-ll-dn8" secondAttribute="trailing" constant="63" id="8kn-8a-o0r"/>
+                <constraint firstAttribute="trailing" secondItem="dUE-ll-dn8" secondAttribute="trailing" constant="-63" id="8kn-8a-o0r"/>
                 <constraint firstItem="dUE-ll-dn8" firstAttribute="centerX" secondItem="F3T-cP-ZuQ" secondAttribute="centerX" id="Ff8-qy-4k3"/>
                 <constraint firstItem="dUE-ll-dn8" firstAttribute="centerY" secondItem="F3T-cP-ZuQ" secondAttribute="centerY" id="n7q-k1-wIy"/>
-                <constraint firstAttribute="leading" secondItem="dUE-ll-dn8" secondAttribute="leading" constant="-155" id="ppw-kq-nLu"/>
+                <constraint firstAttribute="leading" secondItem="dUE-ll-dn8" secondAttribute="leading" constant="155" id="ppw-kq-nLu"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="137.68115942028987" y="99.776785714285708"/>
