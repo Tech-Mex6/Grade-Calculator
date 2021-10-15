@@ -7,7 +7,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet var tableView: UITableView!
     @IBOutlet weak var cumulativeGradePointAverage: UILabel!
     
-    private var numberOfClasses: Int        = 0
+    private var numberOfClasses             = 0
     private var numberOfSemesters           = 0
     
     var gradeSystemPickerData          = [String]()
@@ -17,7 +17,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var selectedGradeSystemPicker = 0
     var selectedThePicker         = 0
     
-    var classDict: [Int:[Classes]] = [Int:[Classes]]()
+    var classDict: [[Classes]] = [[Classes]]()
     var footer: Footer?            = nil
     
     
@@ -94,14 +94,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     //MARK: - TABLE VIEW DATA SOURCE
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        numberOfClasses = classDict[section]?.count ?? 0
+        numberOfClasses = classDict[section].count
         return numberOfClasses
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let _classes =  classDict[indexPath.section] else {return
-            UITableViewCell(style: .default, reuseIdentifier: nil)
-        }
+        let _classes =  classDict[indexPath.section]
         if _classes.count > indexPath.row {
             let _class = _classes[indexPath.row]
             var cell = tableView.dequeueReusableCell(withIdentifier: "Stack")
@@ -143,8 +141,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     /// implements the swipe to delete functionality
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         guard editingStyle == .delete else { return }
-            numberOfClasses = classDict[indexPath.section]?.count ?? 0
-            classDict[indexPath.section]!.remove(at: indexPath.row)
+            numberOfClasses = classDict[indexPath.section].count
+            classDict[indexPath.section].remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .left)
             numberOfClasses -= 1
     }
@@ -173,12 +171,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         footerView.sectionNumber = section
         footerView.backgroundColor = .systemGray
-        footerView.classGPA = Classes.calculateGPA(for: self.classDict[section] ?? [])
+        footerView.classGPA = Classes.calculateGPA(for: self.classDict[section])
         
         var semesters = [Semesters]()
         
         for i in 0..<self.classDict.count {
-            let semester = Semesters.init(classes: self.classDict[i] ?? [])
+            let semester = Semesters.init(classes: self.classDict[i])
             semesters.append(semester)
         }
         self.cumulativeGradePointAverage.text = String.init (Semesters.calculateCGPA(for: semesters)!)
@@ -197,25 +195,24 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     
     //MARK: - ADD CLASS, ADD SEMESTER & DELETE SEMESTER METHODS
+    
     /// Responsible for the addition of sections/semesters to the table view
     @IBAction func addSemesterButton(_ sender: Any) {
-        classDict[numberOfSemesters] = [Classes]()
+        classDict.append([Classes]())
+        //tableView.insertSections(IndexSet(arrayLiteral: classDict.count), with: .automatic)
         numberOfSemesters += 1
         tableView.reloadData()
     }
     
     func didAddClass(sectionNumber: Int) {
-        if classDict[sectionNumber] == nil{
-            classDict[sectionNumber] = [Classes]()
-        }
         let newClass = Classes(courseName: "", gradeLetter: "", creditHours: 0.0, gradePoint: 0.00)
-        classDict[sectionNumber]?.append(newClass)
+        classDict[sectionNumber].append(newClass)
         numberOfClasses += 1
         tableView.reloadData()
     }
     
     func didUpdateClassInfo(semesterIndex:Int, classIndex: Int, courseName: String?, grade: String?, creditHours: String?) {
-        guard let _classes =  classDict[semesterIndex] else { return }
+        let _classes =  classDict[semesterIndex]
         if _classes.count > classIndex {
             let _class = _classes[classIndex]
             _class.courseName = courseName ?? ""
@@ -230,12 +227,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         tableView.reloadData()
     }
+    
     /// Responsible for the deletion of section/semesters from the table view
     func didDeleteSemester(sectionIndex: Int) {
         //classDict.removeValue(forKey: sectionIndex)
-        if let deletedSemester = classDict.removeValue(forKey: sectionIndex) {
-            print(deletedSemester)
-        }
+        classDict.remove(at: sectionIndex)
         tableView.reloadData()
     }
     
