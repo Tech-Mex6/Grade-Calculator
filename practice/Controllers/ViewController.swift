@@ -138,7 +138,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return true
     }
     
-    /// implements the swipe to delete functionality
+    /// implements the swipe to delete cell functionality
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         guard editingStyle == .delete else { return }
             numberOfClasses = classDict[indexPath.section].count
@@ -196,19 +196,23 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     //MARK: - ADD CLASS, ADD SEMESTER & DELETE SEMESTER METHODS
     
-    /// Responsible for the addition of sections/semesters to the table view
+    /// Responsible for the addition of sections/semesters when add semester button is tapped
     @IBAction func addSemesterButton(_ sender: Any) {
+        tableView.beginUpdates()
+        tableView.insertSections(IndexSet(arrayLiteral: classDict.count), with: .left)
         classDict.append([Classes]())
-        //tableView.insertSections(IndexSet(arrayLiteral: classDict.count), with: .automatic)
-        numberOfSemesters += 1
-        tableView.reloadData()
+        tableView.endUpdates()
     }
-    
+    /// function that ensures the addition of classes/cells when add class button is tapped
     func didAddClass(sectionNumber: Int) {
         let newClass = Classes(courseName: "", gradeLetter: "", creditHours: 0.0, gradePoint: 0.00)
+        var row = 0
+        tableView.beginUpdates()
+        tableView.insertRows(at: [IndexPath(row: row, section: sectionNumber)], with: .middle)
         classDict[sectionNumber].append(newClass)
-        numberOfClasses += 1
-        tableView.reloadData()
+        tableView.endUpdates()
+//        numberOfClasses += 1
+//        tableView.reloadData()
     }
     
     func didUpdateClassInfo(semesterIndex:Int, classIndex: Int, courseName: String?, grade: String?, creditHours: String?) {
@@ -228,7 +232,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView.reloadData()
     }
     
-    /// Responsible for the deletion of section/semesters from the table view
+    /// Responsible for the deletion of section/semesters when delete semester button is tapped
     func didDeleteSemester(sectionIndex: Int) {
         //classDict.removeValue(forKey: sectionIndex)
         classDict.remove(at: sectionIndex)
