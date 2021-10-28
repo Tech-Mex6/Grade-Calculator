@@ -207,6 +207,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func didAddClass(sectionNumber: Int) {
         let newClass = Classes(courseName: "", gradeLetter: "", creditHours: 0.0, gradePoint: 0.00)
         var row = 0
+        //number of classes = 0 when semester is added
+        //we want to insert the first class at index 0
+        //number of classes += 1 when a class is added
+        //index of new class is 1
+            row = classDict[sectionNumber].count
         tableView.beginUpdates()
         tableView.insertRows(at: [IndexPath(row: row, section: sectionNumber)], with: .middle)
         classDict[sectionNumber].append(newClass)
@@ -235,8 +240,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     /// Responsible for the deletion of section/semesters when delete semester button is tapped
     func didDeleteSemester(sectionIndex: Int) {
         //classDict.removeValue(forKey: sectionIndex)
-        classDict.remove(at: sectionIndex)
-        tableView.reloadData()
+        tableView.beginUpdates()
+        tableView.deleteSections(IndexSet(arrayLiteral: classDict.count - 1), with: .fade)
+        classDict.remove(at: classDict.count - 1)
+        tableView.endUpdates()
+        //tableView.reloadData()
     }
     
 }

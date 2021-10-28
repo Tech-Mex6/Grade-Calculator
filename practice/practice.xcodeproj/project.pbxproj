@@ -87,8 +87,11 @@
 		3E7BD48A25B7B922000B374E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				071A432625A5120E006906BD /* Footer.swift */,
 				071A431F25A5029A006906BD /* Footer.xib */,
+				071A431A25A3EF82006906BD /* Header.swift */,
 				071A431725A3EB7E006906BD /* Header.xib */,
+				079CFE2525AE9F3700503714 /* Stack.swift */,
 				071A4310259EA6A2006906BD /* Stack.xib */,
 				071A4301259EA656006906BD /* Main.storyboard */,
 			);
@@ -98,9 +101,6 @@
 		3E7BD48B25B7B943000B374E /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				079CFE2525AE9F3700503714 /* Stack.swift */,
-				071A431A25A3EF82006906BD /* Header.swift */,
-				071A432625A5120E006906BD /* Footer.swift */,
 				079CFE2025AB82B900503714 /* Classes.swift */,
 				070E287725EEE556004DB1BF /* Semesters.swift */,
 			);
